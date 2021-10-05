@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
+import { BrowserRouter as Router , Route , Switch   } from 'react-router-dom'
+import Creatintroduce from './curdintroduce_me/Createintroduce'
+import Listintroduce from './curdintroduce_me/Listintroduce'
+import   Editintroduce   from './curdintroduce_me/Editintroduce'
+import IntroducecontextProvider from './Hook/Context/State';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <IntroducecontextProvider> 
+    <Router>
+    <Switch>
+      <Route path="/creatintroduce"  exact component={Creatintroduce} />
+      <Route path="/listintroduce"  exact component={Listintroduce} />
+      <Route path="/editintroduce/:id"  exact component={Editintroduce} />
+    </Switch>
+  </Router>
+  </IntroducecontextProvider>
   );
 }
 
